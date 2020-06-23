@@ -19,21 +19,36 @@ class Hog {
         <p>Specialty: ${this.specialty}</p>
         <p>Weight as a ratio of hog to LG - 24.7 Cu. Ft. French Door Refrigerator with Thru-the-Door Ice and Water: ${this.weight}</p>
         <p>Highest medal achieved: ${this.highest_medal_achieved} </p>
-        <p>Greased: <input data-id="${this.id} class="toggle" type="checkbox" value="greased" ${checked} ></p><br />
-        <button class="delete" data-id="${this.id}>DELETE ME?</button>
+        <p>Greased: <input data-id="${this.id}" class="toggle" type="checkbox" value="greased" ${checked} ></p>
+        <button class="delete">DELETE ME???</button>
       `
     }
 
 
     // delete our hogs
-    // deleteHog(){
-    //   console.log("you clicked delete hog!")
-    // }
+    deleteHog(e){
+      const id = parseInt(e.target.parentElement.id)
+      fetch(`http://localhost:3000/hogs/${id}`,{
+        method: 'DELETE'
+      })
+      .then(() => {
+        document.getElementById('hog-container').removeChild(document.getElementById(id))
+      })
+    }
 
-    // // checkbox for our greased status
-    // greaseToggle(){
-    //   console.log("you clicked grease toggle!")
-    // }
+    // checkbox for our greased status
+    greaseToggle(e){
+      const id = parseInt(e.target.parentElement.parentElement.id)
+      fetch(`http://localhost:3000/hogs/${id}`,{
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          greased: e.target.checked
+        })
+    })
+  }
 
 
 
@@ -45,6 +60,10 @@ class Hog {
       hogCard.id = this.id
       hogCard.innerHTML += this.hogHTML()
       hogContainer.appendChild(hogCard)
+      hogCard.addEventListener('click', e => {
+        if (e.target.className === 'toggle') this.greaseToggle(e)
+        if (e.target.className.includes('delete')) this.deleteHog(e)
+      })
     }
 
 
