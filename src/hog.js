@@ -15,7 +15,7 @@ class Hog {
       let checked = this.greased == true ? "checked" : ""
       return `
         <h2>${this.name}</h2>
-        <img src="${this.image}" />
+        <img src="${this.image}" width="100" />
         <p>Specialty: ${this.specialty}</p>
         <p>Weight as a ratio of hog to LG - 24.7 Cu. Ft. French Door Refrigerator with Thru-the-Door Ice and Water: ${this.weight}</p>
         <p>Highest medal achieved: ${this.highest_medal_achieved} </p>
