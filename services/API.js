@@ -12,9 +12,6 @@ class API {
     }) 
   }
 
-
-
-
   // move our form here
   static addHog(e){
     e.preventDefault()
@@ -25,8 +22,14 @@ class API {
         'greased': e.target.greased.checked,
         'weight': e.target.weight.value,
         'highest_medal_achieved': e.target.medal.value,
-        'image': e.target.img.value
-    }
+        'image': e.target.img.value,
+        'piglets_attributes': {
+          'name': e.target.piglet.value,
+          'color': e.target.color.value,
+          'sex': e.target.sex.value,
+          'cuteness_factor': e.target.cuteness.value
+        } 
+    };
     // write our fetch and send it to our back end
     fetch('http://localhost:3000/hogs', {
         method: 'POST',
@@ -46,4 +49,6 @@ class API {
     // clear our form
   }
   // make sure all the functions still work
+
+  
 }

@@ -14,7 +14,7 @@ class Hog {
     hogHTML(){
       let checked = this.greased == true ? "checked" : ""
       return `
-        <h2>${this.name}</h2>
+        <a href="/hogs/${this.id}"><h2 class="header">${this.name}</h2></a>
         <img src="${this.image}" width="100" />
         <p>Specialty: ${this.specialty}</p>
         <p>Weight as a ratio of hog to LG - 24.7 Cu. Ft. French Door Refrigerator with Thru-the-Door Ice and Water: ${this.weight}</p>
@@ -63,9 +63,25 @@ class Hog {
       hogCard.addEventListener('click', e => {
         if (e.target.className === 'toggle') this.greaseToggle(e)
         if (e.target.className.includes('delete')) this.deleteHog(e)
+        if (e.target.className.includes('header')) this.showHog(e)
       })
     }
 
 
-    // link to a show page & show code
+    // add event listener
+    // static showHogs(){
+    //   debugger
+    //   let headers = Array.from(document.getElementsByClassName('header'))
+    //   debugger
+    //   headers.forEach(head => {
+    //     debugger
+    //     head.addEventListener('click', Hog.showHog)
+    //   })
+    // }
+
+    showHog(e){
+      debugger
+    }
 }
+
+// 
