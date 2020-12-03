@@ -7,6 +7,13 @@ class API {
       .then(hogs => {
         hogs.forEach(hog => {
             const { id, name, specialty, greased, weight,highest_medal_achieved, image } = hog
+            // const id = hog.id
+            // const name = hog.name
+            // const specialty = hog.specialty
+            // const greased = hog.greased
+            // const weight = hog.weight
+            // const highest_medal_achieved = hog.highest_medal_achieved
+            // const image = hog.image
             new Hog(id, name, specialty, greased, weight,highest_medal_achieved, image)
         })
     }) 
@@ -23,12 +30,12 @@ class API {
         'weight': e.target.weight.value,
         'highest_medal_achieved': e.target.medal.value,
         'image': e.target.img.value,
-        'piglets_attributes': {
+        'piglets_attributes': [{
           'name': e.target.piglet.value,
           'color': e.target.color.value,
           'sex': e.target.sex.value,
           'cuteness_factor': e.target.cuteness.value
-        } 
+        }] 
     };
     // write our fetch and send it to our back end
     fetch('http://localhost:3000/hogs', {

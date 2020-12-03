@@ -39,13 +39,14 @@ class Hog {
     // checkbox for our greased status
     greaseToggle(e){
       const id = parseInt(e.target.parentElement.parentElement.id)
+
       fetch(`http://localhost:3000/hogs/${id}`,{
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          greased: e.target.checked
+          greased: e.target.checked 
         })
     })
   }
